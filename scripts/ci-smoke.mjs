@@ -6,9 +6,9 @@
 import { mkdtempSync, rmSync, existsSync, readdirSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { pathToFileURL } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
-const PKG_DIR = new URL('..', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')
+const PKG_DIR = fileURLToPath(new URL('..', import.meta.url))
 const FIXTURE = join(PKG_DIR, 'fixtures', 'format-matrix', 'full.txt')
 
 const failures = []
