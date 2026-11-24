@@ -3,7 +3,7 @@
 ## 为什么要有这个东西
 
 DSH 加载插件的方式是：profile 里的 `node_modules/dsh-novel-helper` 是一个**目录联接**，
-原先直接指向开发目录 `D:\codetest\novel-plugin`。
+原先直接指向开发目录 `.\novel-plugin`。
 
 后果：**保存即上线**。编辑器里改错一个字符，DSH 下次启动就加载不了插件，直接起不来；
 而你在编辑器里看到的永远是"文件已保存"，没有任何提示告诉你此刻生产已经坏了。
@@ -12,7 +12,7 @@ DSH 加载插件的方式是：profile 里的 `node_modules/dsh-novel-helper` �
 
 ```
 ReferenceError: randomUUID is not defined
-    at file:///D:/codetest/novel-plugin/index.js:534
+    at file:///index.js:534
 ```
 
 `index.js` 里用了 `randomUUID()`，但 `import { randomUUID } from 'node:crypto'` 那行没写。
@@ -87,7 +87,7 @@ scripts\np.cmd gate:selftest
 ## 目录结构
 
 ```
-D:\codetest\novel-plugin\            ← 开发目录，随你怎么改，DSH 不再加载它
+            ← 开发目录，随你怎么改，DSH 不再加载它
 ├─ releases\
 │  ├─ index.json                     ← 发布记录（含 prev，回滚就是靠它）
 │  ├─ 20261124-0230-ab12cd\          ← 不可变发布件，只有 verify 全过才会被创建
@@ -102,7 +102,7 @@ D:\codetest\novel-plugin\            ← 开发目录，随你怎么改，DSH �
 
 ```
 ~\.dsh\profiles\desktop\node_modules\@local\dsh-novel-helper
-  → D:\codetest\novel-plugin\releases\<id>     ✔ 只有验证过的代码会到这里
+  → releases\<id>     ✔ 只有验证过的代码会到这里
 ```
 
 ## 发布流程做了什么（`publish.mjs`）
@@ -112,7 +112,7 @@ D:\codetest\novel-plugin\            ← 开发目录，随你怎么改，DSH �
 3. **对发布件再验一遍** → 抓"`files` 漏了文件"这类只在发布后才会暴露的问题；不过就删掉该发布件。
 4. `--apply` 时才切换联接；切换后立刻 `realpath` 校验，失败自动切回原目标，绝不留下悬空联接。
 
-只有第 4 步会写 workspace 之外（profile 的 node_modules），其余全程在 `D:\codetest` 内。
+只有第 4 步会写 workspace 之外（profile 的 node_modules），其余全程在 `.` 内。
 
 ## 回滚
 
@@ -138,7 +138,7 @@ scripts\np.cmd status
 
 ## 日常姿势
 
-1. 在 `D:\codetest\novel-plugin` 里改代码，随便改、随便存，DSH 不受影响。
+1. 在 `.\novel-plugin` 里改代码，随便改、随便存，DSH 不受影响。
 2. 改完 `scripts\np.cmd verify`，红了你就在自己的开发目录里修，不会波及生产。
 3. 绿了 `scripts\np.cmd publish --apply --note "……"`，重启 DSH。
 4. 重启出问题 `scripts\np.cmd rollback`，重启回来。

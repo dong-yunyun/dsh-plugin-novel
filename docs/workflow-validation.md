@@ -85,7 +85,7 @@ manifest.json + cards/*.json
 
 | 步骤 | 动作 |
 |---|---|
-| 1 | `profiles/desktop/node_modules/dsh-novel-helper` → junction 指向 `D:\codetest\novel-plugin` |
+| 1 | `profiles/desktop/node_modules/dsh-novel-helper` → junction 指向 `.\novel-plugin` |
 | 2 | profile `package.json` 的 `dsh.profile.bundles` 追加该包名 |
 | 3 | 依赖声明 `"dsh-novel-helper": "file:D:/codetest/novel-plugin"` 作为记录 |
 

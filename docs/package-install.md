@@ -8,7 +8,7 @@
 ## 一、打包
 
 ```powershell
-cd D:\codetest\novel-plugin
+cd .\novel-plugin
 pnpm pack --pack-destination dist
 ```
 
@@ -135,10 +135,10 @@ bundle patch   = ./cordis.patch.yml 存在: true
 ## 复现
 
 ```powershell
-cd D:\codetest\novel-plugin
+cd .\novel-plugin
 pnpm pack --pack-destination dist
 
 # 干净目录安装
 mkdir $env:TEMP\it && cd $env:TEMP\it
-pnpm add D:\codetest\novel-plugin\dist\local-dsh-novel-helper-0.1.0.tgz --ignore-scripts
+pnpm add dist\local-dsh-novel-helper-0.1.0.tgz --ignore-scripts
 ```

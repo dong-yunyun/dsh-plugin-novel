@@ -2,7 +2,7 @@
 // 发布闸门：验证 → 冻结成发布件 → 只让"发布件"上线
 //
 // 生产环境（DSH profile 的 node_modules/dsh-novel-helper）是一个目录联接。
-// 以前它直接指向开发目录 D:\codetest\novel-plugin，所以"保存即上线"，
+// 以前它直接指向开发目录本身，所以"保存即上线"，
 // 一次手误就能让 DSH 起不来。从这里开始，它只指向 releases/<id>，
 // 而 releases/<id> 只有在完好通过 verify 之后才会被创建。
 //

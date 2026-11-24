@@ -140,10 +140,10 @@ novel_ingest({ from: 6, to: 6, limit: 1 })
 
 ```powershell
 # 回归
-node D:\codetest\novel-plugin\scripts\validate-workflow.mjs
+node scripts\validate-workflow.mjs
 
 # 三功能产物
-node D:\codetest\novel-plugin\scripts\build-deliverables.mjs
+node scripts\build-deliverables.mjs
 
 # 改代码后让运行中的插件生效：
 #   改 profiles\desktop\cordis.patch.yml 里 novel-helper 的任一配置值（必须真的变）
@@ -155,7 +155,7 @@ node D:\codetest\novel-plugin\scripts\build-deliverables.mjs
 
 本机 DSH 是源码检出 + 独立 profile，且**无 `plugin_manager` 工具**（全仓无 `install_bundle` 实现）。手工安装：
 
-1. `profiles/desktop/node_modules/dsh-novel-helper` → junction 指向 `D:\codetest\novel-plugin`
+1. `profiles/desktop/node_modules/dsh-novel-helper` → junction 指向 `.\novel-plugin`
 2. profile `package.json` 的 `dsh.profile.bundles` 追加包名
 3. profile `cordis.patch.yml` 加同 id 覆盖行
 

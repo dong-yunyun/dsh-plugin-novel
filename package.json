@@ -10,12 +10,26 @@
     "novel",
     "continuation",
     "screenplay",
-    "long-context"
+    "long-context",
+    "starcraft"
   ],
+  "author": "dong-yunyun",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dong-yunyun/dsh-plugin-novel.git"
+  },
+  "homepage": "https://github.com/dong-yunyun/dsh-plugin-novel#readme",
+  "bugs": {
+    "url": "https://github.com/dong-yunyun/dsh-plugin-novel/issues"
+  },
   "engines": {
     "node": ">=22.6"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
+    "ci": "node scripts/ci-smoke.mjs",
     "verify": "node scripts/verify.mjs",
     "status": "node scripts/publish.mjs --status",
     "publish": "node scripts/publish.mjs",

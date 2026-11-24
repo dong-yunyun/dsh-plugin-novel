@@ -1,0 +1,26 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [22.x, 24.x]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      # 公开仓库不含小说原文（版权原因），所以不跑 verify 闸门，只跑不依赖数据的冒烟
+      - name: 语法检查
+        run: |
+          node --check index.js
+          for f in src/core/*.mjs scripts/*.mjs scripts/lib/*.mjs; do node --check "$f"; done
+      - name: 冒烟（导入 → 切分 → 注册工具）
+        run: node scripts/ci-smoke.mjs

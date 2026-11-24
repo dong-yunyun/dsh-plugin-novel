@@ -79,5 +79,5 @@ deliverables/04-continue-ch85.md  1 次  [高潮]
 ## 复现
 
 ```powershell
-node D:\codetest\novel-plugin\scripts\scan-content.mjs
+node scripts\scan-content.mjs
 ```

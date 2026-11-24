@@ -87,7 +87,7 @@
 ## 复现
 
 ```powershell
-node D:\codetest\novel-plugin\scripts\scale-test.mjs
+node scripts\scale-test.mjs
 ```
 
 产物：`novels/流氓高手/.scale-sim/`

@@ -90,5 +90,5 @@
 ## 五、复现
 
 ```powershell
-node D:\codetest\novel-plugin\scripts\scene-diff.mjs
+node scripts\scene-diff.mjs
 ```
