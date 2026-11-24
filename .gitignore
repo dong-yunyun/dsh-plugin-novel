@@ -1,0 +1,14 @@
+# 第三方小说原文 / 大体积素材（不随代码发布）
+/novels/
+/related/
+
+# 构建产物与本地备份
+/dist/
+/releases/
+/.backup/
+
+# 依赖与系统杂项
+node_modules/
+*.log
+.DS_Store
+Thumbs.db

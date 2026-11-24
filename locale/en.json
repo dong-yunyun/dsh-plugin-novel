@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Novel Continuation Helper",
+    "description": "Moves a long novel out of chat history: extracts structured chapter cards offline, injects them by chapter, and exports a self-contained synopsis you can feed straight into continuation or screenplay work."
+  }
+}

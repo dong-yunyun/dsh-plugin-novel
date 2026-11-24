@@ -1,0 +1,49 @@
+{
+  "name": "dsh-novel-helper",
+  "version": "0.2.2",
+  "private": false,
+  "type": "module",
+  "license": "MIT",
+  "description": "网文续写助手：离线结构化摄取 + 分层注入，让输入 token 与全书字数解耦",
+  "keywords": [
+    "dsh-plugin",
+    "novel",
+    "continuation",
+    "screenplay",
+    "long-context"
+  ],
+  "engines": {
+    "node": ">=22.6"
+  },
+  "scripts": {
+    "verify": "node scripts/verify.mjs",
+    "status": "node scripts/publish.mjs --status",
+    "publish": "node scripts/publish.mjs",
+    "publish:apply": "node scripts/publish.mjs --apply",
+    "rollback": "node scripts/rollback.mjs",
+    "gate:selftest": "node scripts/selftest-gate.mjs",
+    "ingest:split": "node src/ingest/split.ts",
+    "ingest:render": "node src/ingest/render.ts",
+    "ingest:nodes": "node src/ingest/nodes.ts"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "src/**/*.mjs",
+    "src/**/*.ts",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

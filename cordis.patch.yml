@@ -1,0 +1,23 @@
+# 网文续写助手 · bundle patch
+# 插入一行 Host 插件；config 可在用户 patch 层覆盖。
+- insert:
+    - id: novel-helper
+      name: 'dsh-novel-helper'
+      config:
+        novelDir: ''   # 必填：作品目录。填相对插件包根的路径（如 novels/我的小说）或绝对路径；留空则插件待命
+        recentChapters: 3
+        bibleTokenBudget: 3000
+        chapterGroupSize: 1
+        diskEstimateMultiplier: 2
+        synopsisProfile: continue
+        synopsisTier: standard
+        synopsisMode: auto
+        eagerSynopsisBudget: 20000
+        contentPolicy: l2-only
+        preScreen: none
+
+# 路径约定：
+#   novelDir 相对 → 相对插件包根解析（推荐，跨机器可移植）
+#   novelDir 绝对 → 原样使用（用户 patch 层的常见写法）
+#   novelDir 留空 → 插件待命，不注册任何工具
+# autoInjectCwdPrefix 是会话 cwd 前缀，天然与机器相关；留空表示不按 cwd 过滤。
